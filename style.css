@@ -1,0 +1,23 @@
+body {
+	-webkit-transition: background-color 3.0s ease-out 1s;
+    -moz-transition: background-color 3.0s ease-out 1s;
+    -o-transition: background-color 3.0s ease-out 1s;
+	transition: background-color 3.0s ease;
+	background-color : white;
+}
+
+.mailboxes {
+	text-align : center;
+}
+
+.mailboxes h1 {
+	font-size: 60px;
+}
+
+.mailboxes h2 {
+	font-size: 50px;
+}
+
+.input {
+	text-align : center;
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<script type="text/javascript" src="https://javascriptbase64.googlecode.com/files/base64.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js">
+		</script>
+	</head>
+
+	<body ng-controller='main'>
+
+		<form class="input" ng-submit="init()">
+			<label>Helpscout API Key: <input type="text" ng-model="api_key" name="api_key"></label>
+			<input type="submit" id="submit" value="Submit" >
+		</form>
+
+		<div class="mailboxes" ng-repeat="key in mailboxes" ng-if="api_ready">
+			<h1>{{key.name}}</h1>
+			<h2>Active: {{key.active_tickets}}</h2>
+			<h2>Total: {{key.total_tickets}}</h2>
+			<br>
+			<br>
+		</div>
+
+		<script>
+			//Thanks for your time Denny!
+			angular.module('helpscout_web_app', [])
+				.controller('main', ['$scope','$http', '$interval', function ($scope,$http,$interval) {
+					
+					//I'll go with the simple object for now.
+					$scope.mailboxes = {}
+
+					//Dunno why this request is so weird.
+					var api_auth = function () {
+						return 'Basic ' + Base64.encode($scope.api_key + ':X');
+					}
+					
+					$scope.init = function () {	
+						console.log('Request sent, loading response...');
+
+						$http.get('https://api.helpscout.net/v1/mailboxes.json', {headers: {'Authorization':api_auth(), 'Content-Type':'application/x-www-form-urlencoded'}}).success($scope.mailbox_controller);
+					}
+					
+					$scope.mailbox_controller = function (data) {
+						$scope.api_ready = true;
+
+						console.log('Request was a success!');
+						for (i=0;i<data.items.length;i++) {
+
+							//Just want to make sure that the id is a string.
+							var mailbox_id = String(data.items[i].id);
+
+							//I'll make this prettier later.
+							$scope.mailboxes[mailbox_id] = {}
+							$scope.mailboxes[mailbox_id].id = mailbox_id;
+							$scope.mailboxes[mailbox_id].name = data.items[i].name;
+							$scope.mailboxes[mailbox_id].email = data.items[i].email;
+							$scope.mailboxes[mailbox_id].active_tickets = null;
+							$scope.mailboxes[mailbox_id].pending_tickets = null;
+							$scope.mailboxes[mailbox_id].folders = []
+							//Takes the argument "active" or "total"
+							$scope.mailboxes[mailbox_id].get_count = function (status, obj) {
+								
+								//Couldn't figure out how to implement "this" here, hence the
+								//extra argument, but let's roll with it.
+
+								var count = null;
+								for (i=0;i<obj.folders.length;i++) {
+									if ((obj.folders[i].type === 'mytickets') || (obj.folders[i].type === 'open')) {
+										count = count + obj.folders[i][status+'Count'];
+									}
+								}
+								return count;
+
+							}
+
+							//The way I've set this up, the only argument I will need to ever
+							//pass is the mailbox_id.
+							$scope.add_mailbox_listener(mailbox_id);
+						}
+					}
+					
+					$scope.add_mailbox_listener = function (mailbox_id) {
+						var success_callback = function (data) {
+							//Reset the color.
+							document.body.style['background-color'] = 'white';
+
+
+							//Update the numbers from last time.
+							$scope.mailboxes[mailbox_id].active_tickets_last = $scope.mailboxes[mailbox_id].active_tickets;
+							$scope.mailboxes[mailbox_id].pending_tickets_last = $scope.mailboxes[mailbox_id].pending_tickets;
+
+							for (i=0;i<data.item.folders.length;i++) {
+								$scope.mailboxes[mailbox_id].folders[i] = data.item.folders[i];
+							}
+
+							$scope.mailboxes[mailbox_id].active_tickets = $scope.mailboxes[mailbox_id].get_count('active',$scope.mailboxes[mailbox_id]);
+							$scope.mailboxes[mailbox_id].total_tickets = $scope.mailboxes[mailbox_id].get_count('total',$scope.mailboxes[mailbox_id]);
+
+							//CSS animations!.
+							if ($scope.mailboxes[mailbox_id].active_tickets > $scope.mailboxes[mailbox_id].active_tickets_last) {
+								document.body.style['background-color'] = 'lightseagreen';
+							} else if ($scope.mailboxes[mailbox_id].active_tickets < $scope.mailboxes[mailbox_id].active_tickets_last) {
+								document.body.style['background-color'] = 'lightgreen';
+							}
+
+						}
+						$interval(function () {
+							$http.get('https://api.helpscout.net/v1/mailboxes/'+mailbox_id+'.json', {headers: {'Authorization':api_auth(), 'Content-Type':'application/x-www-form-urlencoded'}}).success(success_callback);
+						}, 3000);
+					}
+				}]);
+				angular.element(document).ready(function() {
+					angular.bootstrap(document, ['helpscout_web_app']);
+				});
+		</script>
+
+	</body>
+</html>
