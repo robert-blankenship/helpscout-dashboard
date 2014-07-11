@@ -22,4 +22,4 @@ polling freqeuncy.
 
 3. installation:
 ===================
-Just stick the files into the public folder ("/var/www") of your web server. Don't have a server? Be one of the cool kids and get one for free: http://gweb.io/#/
+Just stick the files into a new folder inside of the public folder ("/var/www") of your web server. Don't have a server? Be one of the cool kids and get one for free: http://gweb.io/#/
