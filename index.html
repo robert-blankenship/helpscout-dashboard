@@ -16,7 +16,7 @@
 			<input type="submit" id="submit" value="Submit" >
 		</form>
 
-		<div class="mailboxes" ng-repeat="key in mailboxes" ng-if="api_ready">
+		<div class="mailboxes" id="key.name" ng-repeat="key in mailboxes" ng-if="api_ready" style="background-color : {{key.color}}">
 			<h1>{{key.name}}</h1>
 			<h2>Active: {{key.active_tickets}}</h2>
 			<h2>Total: {{key.total_tickets}}</h2>
@@ -85,7 +85,7 @@
 					$scope.add_mailbox_listener = function (mailbox_id) {
 						var success_callback = function (data) {
 							//Reset the color.
-							document.body.style['background-color'] = 'white';
+							$scope.mailboxes[mailbox_id].color = 'white';
 
 
 							//Update the numbers from last time.
@@ -101,15 +101,15 @@
 
 							//CSS animations!.
 							if ($scope.mailboxes[mailbox_id].active_tickets > $scope.mailboxes[mailbox_id].active_tickets_last) {
-								document.body.style['background-color'] = 'lightseagreen';
+								$scope.mailboxes[mailbox_id].color = 'lightseagreen';
 							} else if ($scope.mailboxes[mailbox_id].active_tickets < $scope.mailboxes[mailbox_id].active_tickets_last) {
-								document.body.style['background-color'] = 'lightgreen';
+								$scope.mailboxes[mailbox_id].color = 'lightgreen';
 							}
 
 						}
 						$interval(function () {
 							$http.get('https://api.helpscout.net/v1/mailboxes/'+mailbox_id+'.json', {headers: {'Authorization':api_auth(), 'Content-Type':'application/x-www-form-urlencoded'}}).success(success_callback);
-						}, 3000);
+						}, 2000);
 					}
 				}]);
 				angular.element(document).ready(function() {

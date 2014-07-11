@@ -1,4 +1,4 @@
-body {
+div {
 	-webkit-transition: background-color 3.0s ease-out 1s;
     -moz-transition: background-color 3.0s ease-out 1s;
     -o-transition: background-color 3.0s ease-out 1s;
@@ -20,4 +20,5 @@ body {
 
 .input {
 	text-align : center;
+	font-size: 30px;
 }
