@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="./style.css">
 	<script type="text/javascript" src="include/base64.js"></script>
 	<script type="text/javascript" src="include/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </head>
 
 <body ng-controller='main'>
@@ -25,7 +26,5 @@
 	</div>
 
 </body>
-
-<script type="text/javascript" src="app.js"></script>
 
 </html>

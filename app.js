@@ -90,7 +90,7 @@
   ]);
 
   angular.element(document).ready(function() {
-    return angular.bootstrap(document, ['helpscout_web_app']);
+    return angular.bootstrap(document, ['helpscout-dashboard']);
   });
 
 }).call(this);

@@ -1,5 +1,5 @@
 # Thanks for your help with base64 stuff Denny!
-angular.module 'helpscout_web_app', []
+angular.module 'helpscout-dashboard', []
 	.controller 'main', ['$scope','$http', '$interval', ($scope,$http,$interval) ->
 		
 		$scope.api_key = null
@@ -91,4 +91,4 @@ angular.module 'helpscout_web_app', []
 ]
 
 angular.element(document).ready ->
-	angular.bootstrap document, ['helpscout_web_app']
+	angular.bootstrap document, ['helpscout-dashboard']
