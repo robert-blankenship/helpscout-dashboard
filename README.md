@@ -1,29 +1,28 @@
 helpscout-dashboard
 ===================
-
 Simple, LIVE dashboard solution for keeping track of helpscout tickets in real-time.
-Current features include soothing colors when new tickets come in or are closed. Since API key
-is only entered via a form, it is very secure as well.
+It uses Clef to create a simple way to log into your dashboard.
 
 overview:
 ===================
-1. License
-2. How it works
-3. Installation
-4. Obligatory puppy
+1. Installation
+2. Obligatory puppy
+3. License
 
-1. license:
+1. installation:
 ===================
-GPL.
+Installation is simple:
 
-2. how it works:
-===================
-Built with angularjs. It pulls the new mailbox data every 3 seconds.
+Step 1: clone the repo folder to your web server.
+Step 2: after cloning, run the install.sh script by doing ./install.sh
+Step 3: change out your values for the app key and url in the app.js file (i'll be making this flow better soon.)
 
-3. installation:
-===================
-Just stick the files into a new folder inside of the public folder.
 
-4. obligatory puppy:
+2. obligatory puppy:
 ===================
 ![Alt text](http://i.huffpost.com/gen/1344259/thumbs/r-PUPPIES-PLAYING-large570.jpg?15 "It is a puppy.")
+
+
+3. license:
+===================
+GPL.
