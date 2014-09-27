@@ -24,8 +24,6 @@
 		<h1>{{key.name}}</h1>
 		<h2>Active: {{key.active_tickets}}</h2>
 		<h2>Total: {{key.total_tickets}}</h2>
-		<br>
-		<br>
 	</div>
 
 </body>
