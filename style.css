@@ -1,7 +1,7 @@
 div {
-	-webkit-transition: background-color 3.0s ease-out 1s;
-    -moz-transition: background-color 3.0s ease-out 1s;
-    -o-transition: background-color 3.0s ease-out 1s;
+	-webkit-transition: background-color 3.0s ease-out 1s;t-transition: background-color 3.0s ease-out 1s;
+    	-moz-transition: background-color 3.0s ease-out 1s;
+   	-o-transition: background-color 3.0s ease-out 1s;
 	transition: background-color 3.0s ease;
 	background-color : white;
 }
@@ -21,4 +21,17 @@ div {
 .input {
 	text-align : center;
 	font-size: 30px;
+}
+
+#Clef {
+	left	: 50%;
+	top		: 50%;
+	position: relative;
+}
+iframe {
+	height	: 500px;
+	left	: -200px;
+	position: absolute;
+	top		: -250px;
+	width	: 400px;
 }
