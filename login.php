@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'helpscout_creds.php'
+include 'helpscout_creds.php';
 
 $app_id 	= $clef_app_key;
 $app_secret = $clef_app_secret;
