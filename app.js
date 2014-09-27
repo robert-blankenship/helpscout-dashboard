@@ -2,21 +2,9 @@
 (function() {
   angular.module('helpscout-dashboard', []).controller('main', [
     '$scope', '$http', '$interval', function($scope, $http, $interval) {
-      var api_auth, request_headers, scriptTag, wrapper;
+      var api_auth, request_headers;
       $scope.api_key = null;
       $scope.mailboxes = {};
-      $scope.clefKey = 'f5141de0b960fbeba62a08aeeaed6b6e';
-      $scope.url = 'http://test.robert.gg/helpscout-dashboard/login.php';
-      scriptTag = document.createElement('script');
-      scriptTag.setAttribute('class', 'clef-button');
-      scriptTag.setAttribute('data-embed', 'true');
-      scriptTag.setAttribute('data-style', 'flat');
-      scriptTag.setAttribute('data-color', 'blue');
-      scriptTag.setAttribute('type', 'text/javascript');
-      scriptTag.setAttribute('src', 'https://clef.io/v3/clef.js');
-      scriptTag.setAttribute('data-app-id', $scope.clefKey);
-      scriptTag.setAttribute('data-redirect-url', $scope.url);
-      wrapper = document.getElementById('Clef').appendChild(scriptTag);
       $http.get('api_key.php').success(function(data) {
         $scope.api_key = data;
         if (data !== '') {

@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+include 'helpscout_creds.php'
+
+?>
 
 <html>
 
@@ -17,6 +21,7 @@
 <body ng-controller='main'>
 
 	<div class="clef-wrapper" ng-hide="hide_it" id="Clef">
+		<script type="text/javascript" src="https://clef.io/v3/clef.js" class="clef-button" data-embed="true" data-app-id="<?=$clef_app_key?>" data-color="blue" data-style="flat" data-redirect-url="<?=$url?>"></script>
 	</div>
 
 	<div class="mailboxes" id="key.name" ng-repeat="key in mailboxes" ng-if="api_ready" style="background-color : {{key.color}}">

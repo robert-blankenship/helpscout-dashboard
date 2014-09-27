@@ -13,10 +13,14 @@ read clef_app_secret
 echo 'Please enter the clef user id.'
 read clef_user_id
 
+echo "Please enter the base URL of your site: (example: http://mysite.com)"
+read url
+
 touch helpscout_creds.php
 echo '<?php'> helpscout_creds.php
 echo '$helpscout_key' = '"'$helpscout_key'"'';'>> helpscout_creds.php
 echo '$clef_app_key' = '"'$clef_app_key'"'';'>> helpscout_creds.php
 echo '$clef_app_secret' = '"'$clef_app_secret'"'';'>> helpscout_creds.php
 echo '$clef_user_id' = '"'$clef_user_id'"'';'>> helpscout_creds.php
+echo '$url' = '"'$url'/helpscout-dashboard/login.php"'';'>> helpscout_creds.php
 echo '?>'>> helpscout_creds.php
