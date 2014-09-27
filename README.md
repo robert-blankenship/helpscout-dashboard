@@ -14,16 +14,15 @@ overview:
 
 1. license:
 ===================
-It's GPL, so do whatever you want with it - it's chill :).
+GPL.
 
 2. how it works:
 ===================
-Built with angularjs. It pulls the new mailbox data every 3 seconds. If you start to hit the rate limit, just modify the
-polling freqeuncy.
+Built with angularjs. It pulls the new mailbox data every 3 seconds.
 
 3. installation:
 ===================
-Just stick the files into a new folder inside of the public folder ("/var/www") of your web server. Don't have a server? Be one of the cool kids and get one for free: http://gweb.io/#/
+Just stick the files into a new folder inside of the public folder.
 
 4. obligatory puppy:
 ===================
