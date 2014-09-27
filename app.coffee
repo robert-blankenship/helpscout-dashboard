@@ -10,7 +10,7 @@ angular.module 'helpscout-dashboard', []
 		$http.get('api_key.php').success (data) ->
 			$scope.api_key = data
 			
-			if data isnt false
+			if data isnt ''
 				$scope.hide_it = true
 				$scope.init()
 

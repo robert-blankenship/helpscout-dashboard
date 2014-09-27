@@ -7,7 +7,7 @@
       $scope.mailboxes = {};
       $http.get('api_key.php').success(function(data) {
         $scope.api_key = data;
-        if (data !== false) {
+        if (data !== '') {
           $scope.hide_it = true;
           return $scope.init();
         }
