@@ -1,0 +1,1 @@
+helpscout_dash.coffe
