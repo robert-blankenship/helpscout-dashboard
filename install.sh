@@ -1,7 +1,7 @@
 #!/bin/bash
 echo 'Please enter your helpscout api key.
- For Windows/Ubuntu, use Shift+Ctrl+V to paste text into the terminal. 
- For Mac, use CMD+V.'
+    For Windows/Ubuntu, use Shift+Ctrl+V to paste text into the terminal. 
+    For Mac, use CMD+V.'
 read helpscout_key
 
 echo 'Please enter your clef app key.'
