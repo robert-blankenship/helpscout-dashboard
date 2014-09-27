@@ -7,7 +7,7 @@ angular.module 'helpscout-dashboard', []
 		#I'll go with the simple object for now.
 		$scope.mailboxes = {}
 		
-		$http.get('/api_key.php').success (data) ->
+		$http.get('api_key.php').success (data) ->
 			$scope.api_key = data
 			
 			if data isnt false
@@ -30,7 +30,7 @@ angular.module 'helpscout-dashboard', []
 			for item in data.items
 
 				#Just want to make sure that the id is a string.
-				mailbox_id = String(data.items[i].id);
+				mailbox_id = String(item.id);
 
 				#I'll make this prettier later.
 				$scope.mailboxes[mailbox_id] = {}
