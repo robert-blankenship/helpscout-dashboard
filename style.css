@@ -24,9 +24,10 @@ div {
 }
 
 #Clef {
-	left	: 50%;
-	top		: 50%;
-	position: relative;
+	left	     : 50%;
+	margin-top   : 28%;
+	margin-bottom   : auto;
+	position	 : relative;
 }
 iframe {
 	height	: 500px;
