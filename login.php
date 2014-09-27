@@ -1,10 +1,12 @@
 <?php
 session_start();
 
+include 'helpscout_creds.php'
 
-$app_id='yourClefId';
-$app_secret='yourClefSecret';
-$code = $_GET['code'];
+$app_id 	= $clef_app_key;
+$app_secret = $clef_app_secret;
+
+$code 		= $_GET['code'];
 
 $postdata = http_build_query(
 	array(
@@ -48,8 +50,8 @@ $user_info = $response['info'];
 
 $clef_id = $user_info['id'];
 
-if ($clef_id == 'yourId') {
-	$_SESSION['clef_id'] = 'yourId';
+if ($clef_id == $clef_user_id) {
+	$_SESSION['clef_id'] = $clef_user_id;
 	header("Location: .");
 	die();
 }?>
