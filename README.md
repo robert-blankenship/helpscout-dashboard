@@ -4,14 +4,7 @@ Simple, LIVE dashboard solution for keeping track of helpscout tickets in real-t
 It uses Clef to create a simple way to log into your dashboard.
 
 
-overview:
-===================
-1. Installation
-2. Obligatory puppy
-3. License
-
-
-1. installation:
+installation:
 ===================
 Installation is simple:
 
@@ -20,11 +13,11 @@ Step 2: Run the install.sh script by doing ./install.sh.
 Step 3: The helpscout widget will be available at http://yoursite.com/helpscout-dashboard/
 
 
-2. obligatory puppy:
+obligatory puppy:
 ===================
 ![Alt text](http://i.huffpost.com/gen/1344259/thumbs/r-PUPPIES-PLAYING-large570.jpg?15 "It is a puppy.")
 
 
-3. license:
+license:
 ===================
 GPL.
