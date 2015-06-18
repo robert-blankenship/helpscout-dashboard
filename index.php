@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+include 'helpscout_creds.php'
+
+?>
 
 <html>
 
@@ -13,15 +17,13 @@
 
 <body ng-controller='main'>
 	<div class="clef-wrapper" ng-hide="hide_it" id="Clef">
-		<script type="text/javascript" src="https://clef.io/v3/clef.js" class="clef-button" data-embed="true" data-app-id="f5141de0b960fbeba62a08aeeaed6b6e" data-color="blue" data-style="flat" data-redirect-url="http://test.robert.gg/helpscout-dashboard/login.php"></script>
+		<script type="text/javascript" src="https://clef.io/v3/clef.js" class="clef-button" data-embed="true" data-app-id="<?=$clef_app_key?>" data-color="blue" data-style="flat" data-redirect-url="<?=$url?>"></script>
 	</div>
 
 	<div class="mailboxes" id="key.name" ng-repeat="key in mailboxes" ng-if="api_ready" style="background-color : {{key.color}}">
 		<h1>{{key.name}}</h1>
 		<h2>Active: {{key.active_tickets}}</h2>
 		<h2>Total: {{key.total_tickets}}</h2>
-		<br>
-		<br>
 	</div>
 
 	<script type="text/javascript" src="app.js"></script>
