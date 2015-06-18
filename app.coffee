@@ -5,7 +5,7 @@ angular.module 'helpscout-dashboard', []
 
 		$scope.mailboxes = {}
 		
-		$http.get('api_key.php').success (data) ->
+		$http.get('helpscout.php').success (data) ->
 			HELPSCOUT_API_KEY = data
 			
 			if data isnt ''
