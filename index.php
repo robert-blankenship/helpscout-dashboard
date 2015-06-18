@@ -1,8 +1,4 @@
-<?php session_start(); 
-
-include 'helpscout_creds.php'
-
-?>
+<?php session_start(); ?>
 
 <html>
 
